@@ -1,2 +1,2 @@
-require("cfg-default.remap")
+require("cfg-default")
 print("hello")

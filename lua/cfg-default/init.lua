@@ -1,1 +1,6 @@
-print("in cfg-default init.lua")
+require("cfg-default.opt")
+require("cfg-default.remap")
+require("cfg-default.packer")
+print("** Configured options **")
+print("** Configured key remap **")
+print("** Configured packer **")
