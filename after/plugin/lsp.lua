@@ -66,7 +66,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("n", "<leader>gd", function()
-
     vim.cmd("belowright split")                     -- opens a horizontal split
     vim.lsp.buf.definition()             -- jumps to the definition in that split
 end, { desc = "LSP definition in split" })

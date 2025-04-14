@@ -1,3 +1,2 @@
+print("** Initializing custom configs... **")
 require("cfg-default")
-print("hello")
-
