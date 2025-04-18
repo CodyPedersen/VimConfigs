@@ -16,5 +16,3 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true, silent = true })
 --vim.keymap.set('n', '<M-h>', '<C-w>h', { noremap = true, silent = true })
 --vim.keymap.set('n', '<M-l>', '<C-w>l', { noremap = true, silent = true })
 
-print("** Configured remap **")
-

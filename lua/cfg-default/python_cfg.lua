@@ -4,6 +4,3 @@ vim.keymap.set('n', '<leader>rp', function()
 end, { noremap = true, silent = true })
 
 vim.keymap.set('v', '<C-c>', '"+y', { noremap = true, silent = true, desc = 'Yank selection to clipboard' })
-
-print("** Configured python execution - <leader>rp **")
-
