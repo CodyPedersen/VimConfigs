@@ -60,6 +60,14 @@ lsp.configure('hls', {
 --   end,
 -- })
 --
+-- can probably remove
+vim.api.nvim_create_autocmd("CursorHoldI", {
+  pattern = "*",
+  callback = function()
+    vim.lsp.buf.signature_help()
+  end,
+})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
