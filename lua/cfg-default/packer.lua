@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
 
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-
+    -- Theme
     use({
         'rose-pine/neovim',
         as = 'rose-pine',
@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
-
+    -- Navigation
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -49,14 +49,39 @@ return require('packer').startup(function(use)
             }
         end
 	})
-
+    -- Treesitter
     use("nvim-treesitter/playground")
     use("theprimeagen/harpoon")
     use("theprimeagen/refactoring.nvim")
     use("mbbill/undotree")
     use("tpope/vim-fugitive")
-    use("nvim-treesitter/nvim-treesitter-context");
+    use("nvim-treesitter/nvim-treesitter-context")
 
+    -- -- Debugger
+    use {
+        'mfussenegger/nvim-dap',
+        config = function()
+          local dap = require('dap')
+      dap.adapters.python = {
+        type = 'executable',
+        command = 'python',
+        args = { '-m', 'debugpy.adapter' },
+      }
+      dap.configurations.python = {
+        {
+          type = 'python',
+          request = 'launch',
+          name = "Launch file",
+          program = "${file}",
+          pythonPath = function()
+            return '/Users/enso/.pyenv/shims/python'
+          end,
+        },
+      }
+    end
+    }
+
+    -- LSP
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -85,6 +110,12 @@ return require('packer').startup(function(use)
     use("github/copilot.vim")
     use("eandrju/cellular-automaton.nvim")
     use("laytan/cloak.nvim")
+-- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
 
-end)
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+    end)
 

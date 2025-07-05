@@ -5,7 +5,9 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'pyright',
   'rust_analyzer',
-  'hls'
+  'hls',
+  'elixirls',
+-- 'ty'
 })
 
 -- Fix Undefined global 'vim'
@@ -19,6 +21,11 @@ lsp.configure('lua-language-server', {
     }
 })
 
+lsp.configure('elixirls', {
+  cmd = { "/opt/homebrew/bin/elixir-ls" },
+})
+
+-- not entirely sure this works
 lsp.configure('hls', {
   on_attach = function(client, bufnr)
     -- Disable signature help if you don't like inline signatures
@@ -60,13 +67,6 @@ lsp.configure('hls', {
 --   end,
 -- })
 --
--- can probably remove
-vim.api.nvim_create_autocmd("CursorHoldI", {
-  pattern = "*",
-  callback = function()
-    vim.lsp.buf.signature_help()
-  end,
-})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -112,6 +112,7 @@ lsp.on_attach(function(client, bufnr)
     vim.lsp.buf.definition()             -- jumps to the definition in that split
 end, { desc = "LSP definition in split" })
 end)
+
 
 lsp.setup()
 

@@ -1,0 +1,26 @@
+--local dap = require('dap')
+--
+-- -- Configure Python debugpy
+-- dap.adapters.python = {
+--   type = 'executable';
+--   command = 'python';
+--   args = { '-m', 'debugpy.adapter' };
+-- }
+--
+-- dap.configurations.python = {
+--   {
+--     type = 'python',
+--     request = 'launch',
+--     name = "Launch file",
+--     program = "${file}",
+--     pythonPath = function()
+--       return '/Users/enso/.pyenv/shims/python'  -- or your virtualenv Python
+--     end,
+--   },
+-- }
+--
+-- vim.keymap.set('n', '<leader>dn', function() dap.continue() end)
+-- vim.keymap.set('n', '<leader>do', function() dap.step_over() end)
+-- vim.keymap.set('n', '<leader>di', function() dap.step_into() end)
+-- vim.keymap.set('n', '<leader>dx', function() dap.step_out() end)
+-- vim.keymap.set('n', '<Leader>b', function() dap.toggle_breakpoint() end)
